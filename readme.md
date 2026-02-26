@@ -10,6 +10,7 @@ We are still extending our experiments, so we are not able to release the full c
 conda create -n BTP python=3.10 -y
 conda activate BTP
 git clone https://github.com/wistful-8029/BTP-3DAD.git
+cd BTP-3DAD
 pip install -r requirements.txt
 ```
 ## Data Preparation
