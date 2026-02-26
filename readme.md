@@ -3,11 +3,15 @@
 
 # Notes
 We are still extending our experiments, so we are not able to release the full codebase at this stage. Instead, we provide a minimal working example that applies a simple linear projection to map ULIP patch features into a channel space aligned with the text embeddings. This release is intended to help researchers quickly build upon ULIP-based 3D anomaly detection frameworks and explore more pioneering directions.
-# ULIP权重
-https://huggingface.co/datasets/SFXX/ulip/tree/main/ULIP-2/pretrained_models
+
 # Quick Start
 ## Installation
-写一下环境配置
+```
+conda create -n BTP python=3.10 -y
+conda activate BTP
+git clone https://github.com/wistful-8029/BTP-3DAD
+pip install -r requirements.txt
+```
 ## Data Preparation
 
 Download the datasets from [Real3D-AD](https://drive.google.com/file/d/1oM4qjhlIMsQc_wiFIFIVBvuuR8nyk2k0/view?usp=sharing) and [Anomaly-ShapeNet](https://huggingface.co/datasets/Chopper233/Anomaly-ShapeNet).
@@ -70,5 +74,25 @@ BTP-3DAD/
     └── ULIP-2-PointBERT-10k-xyzrgb-pc-vit_g-objaverse_shapenet-pretrained.pt
 ```
 ## Run
+```
+python min_baseline.py  --data_root /path/to/Real3D-AD-2048
+```
+Example output：
+```
+ULIP text encoding (normal): shape=(1280,)
+ULIP text encoding (anomaly): shape=(1280,)
 
+Point cloud input: shape=(8, 2048, 3)
+ULIP global_embedding: shape=(8, 384)
+ULIP intermediate patch_idx: shape=(8, 512, 32)
+ULIP intermediate layer_feats[2]: shape=(8, 513, 384)
+ULIP intermediate layer_feats[5]: shape=(8, 513, 384)
+ULIP intermediate layer_feats[8]: shape=(8, 513, 384)
+ULIP intermediate layer_feats[11]: shape=(8, 513, 384)
+ULIP cls_feature: shape=(8, 384)
+ULIP patch_features (without CLS): shape=(8, 512, 384)
+Adapter patch_features: shape=(8, 512, 1280)
+```
+The above outputs correspond to the variables highlighted in the red boxes in the figure below. With these intermediate features (text embeddings, global/CLS features, and patch-level features), one can build a ULIP-based pipeline for 3D anomaly detection. We will release our full implementation in the near future.
+![Overview](assets/overview.png)
 # Citation
