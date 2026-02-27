@@ -96,4 +96,5 @@ Adapter patch_features: shape=(8, 512, 1280)
 ```
 The above outputs correspond to the variables highlighted in the red boxes in the figure below. With these intermediate features (text embeddings, global/CLS features, and patch-level features), one can build a ULIP-based pipeline for 3D anomaly detection. We will release our full implementation in the near future.
 ![Overview](assets/overview.png)
-# Citation
+# Acknowledgements
+We sincerely thank the authors and contributors of [ulip2_encoder](https://github.com/SanBingYouYong/ulip2_encoder) and [ULIP](https://github.com/salesforce/ULIP) for their valuable open-source contributions.
