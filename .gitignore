@@ -1,0 +1,31 @@
+# Local backups and archived files
+backup/
+
+# Experiment outputs
+outputs/
+results/
+
+# Local datasets and checkpoints
+data/Real3D-AD-2048-npz/
+data/real3d_2048/
+pretrained/
+*.pth
+*.pt
+*.ckpt
+*.bin
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environments and editor files
+.env
+.venv/
+venv/
+.vscode/
+.idea/
+
+# Local paper drafts and notes
+*.pdf
+新aupro指标.md
