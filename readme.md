@@ -140,32 +140,7 @@ python test_standard_aupro.py \
   --output_dir ./outputs/eval/airplane_standard_aupro
 ```
 
-To save original-resolution anomaly maps:
 
-```bash
-python test_standard_aupro.py \
-  --ckpt_root ./outputs/train/Real3D/airplane/run_00_seed111/best.pth \
-  --train_class airplane \
-  --dataset_name Real3D \
-  --data_root ./data/Real3D-AD-2048-npz \
-  --model_path ./pretrained/ULIP-2-PointBERT-10k-xyzrgb-pc-vit_g-objaverse_shapenet-pretrained.pt \
-  --output_dir ./outputs/eval/airplane_standard_aupro \
-  --save_fullres \
-  --save_dir ./outputs/eval/airplane_standard_aupro/visual
-```
-
-The script reports both:
-
-- `Point sampled-2048 StdAU-PRO`, computed on the sampled 2048 input points.
-- `Point full-res StdAU-PRO`, computed after mapping sampled scores back to the original point-cloud resolution.
-
-The standard AU-PRO implementation:
-
-1. Builds GT anomaly regions from connected anomalous points.
-2. Sweeps anomaly-score thresholds.
-3. Computes per-region overlap under each threshold.
-4. Computes FPR from normal points.
-5. Integrates the PRO-FPR curve up to `--aupro_fpr_limit`, default `0.3`.
 
 
 ## Legacy Evaluation
